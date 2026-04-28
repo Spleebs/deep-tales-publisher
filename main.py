@@ -962,7 +962,7 @@ def _fetch_market_data():
             f"?ids={COINGECKO_IDS}"
             f"&vs_currencies=usd"
             f"&include_7d_change=true"
-            f"&include_24h_vol=true"
+            f"&include_24hr_vol=true"
         )
         r = requests.get(url, timeout=15)
         if r.status_code != 200:
@@ -976,7 +976,7 @@ def _fetch_market_data():
             prices[cg_id] = {
                 "usd": entry.get("usd", 0),
                 "usd_7d_change": entry.get("usd_7d_change", 0),
-                "usd_24h_vol": entry.get("usd_24h_vol", 0),
+                "usd_24h_vol": entry.get("usd_24hr_vol", 0),
             }
 
         _market_cache["data"] = {"prices": prices}
